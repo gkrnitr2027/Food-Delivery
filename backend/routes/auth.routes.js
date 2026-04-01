@@ -21,7 +21,7 @@ authRouter.post("/signup", signUp)
 authRouter.post("/signin", signIn)
 
 // Logout
-authRouter.post("/signout", signOut)
+authRouter.get("/signout", signOut)
 
 
 // ================= OTP / PASSWORD RESET =================
