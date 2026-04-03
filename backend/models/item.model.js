@@ -1,21 +1,23 @@
+import { count } from "console";
 import mongoose from "mongoose";
 
 const itemSchema = new mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:true,
     },
-    image:{
+    image:{ 
         type:String,
-        required:true
+        required:true,
     },
     shop:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"Shop"
+        ref:"Shop",
+        required:true,
     },
     category:{
         type:String,
-        enum:[
+        enum: [
             "Snacks",
             "Main Course",
             "Desserts",
@@ -27,24 +29,23 @@ const itemSchema = new mongoose.Schema({
             "Chinese",
             "Fast Food",
             "Others"
-        ],
-        required:true
-    },
-     price:{
+            ],
+         required: true
+        },
+    price:{
         type:Number,
         min:0,
         required:true,
     },
     foodType:{
         type:String,
-        enum:["Veg","Non-Veg"],
-        required:true,
+        enum:["veg","non-veg"],
+        required:true,  
     },
-    rating:{
-        average:{type:Number, default:0},
-        count:{type:Number, default:0},
-    },
-}, {timestamps:true})
-
-const Item=mongoose.model('Item',itemSchema);
-export default Item;
+    ratings:{
+        Average:{type:Number,default:0},
+        count:{type:Number,default:0},
+    }
+},{timestamps:true})
+const Item= mongoose.model("Item",itemSchema);
+export default Item;    
