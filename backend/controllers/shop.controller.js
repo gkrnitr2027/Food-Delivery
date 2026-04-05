@@ -1,5 +1,6 @@
 import Shop from "../models/shop.model.js";
 import uploadOnCloudinary from "../utils/cloudinary.js";
+import mongoose from "mongoose"
 
 export const createEditShop=async (req, res) => {
     try {
@@ -27,10 +28,14 @@ export const createEditShop=async (req, res) => {
 
 export const getMyShop=async (req, res) => {
     try {
-        const shop=await Shop.findOne({owner:req.userId}).populate("owner").populate({
-                path:"items",
-                options:{sort:{updatedAt:-1}}
-            })
+        const shop = await Shop.findOne({
+            owner: new mongoose.Types.ObjectId(req.userId)
+        })
+        .populate("owner")
+        .populate({
+            path: "items",
+            options: { sort: { updatedAt: -1 } }
+        });
         if(!shop){
              return res.status(404).json({ message: "Shop not found" });
         }
