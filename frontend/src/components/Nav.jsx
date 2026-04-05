@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { serverUrl } from "../App"
 import { setUserData } from '../redux/userSlice';
 import axios from "axios"
+import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
     const {userData, currentCity} = useSelector(state=>state.user)
@@ -16,6 +17,7 @@ const Nav = () => {
     const [showInfo, setShowInfo] = useState(false)
     const [showSearch, setShowSearch] = useState(false)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const handleLogOut=async()=>{
         try {
             await axios.get(`${serverUrl}/api/auth/signout`, {}, {withCredentials:true})
@@ -53,11 +55,11 @@ const Nav = () => {
             {userData.role=="user" && (showSearch?<RxCross2 size={25} className='text-[#ff4d2d] md:hidden' onClick={()=>setShowSearch(false)}/>:<IoSearch size={25} className='text-[#ff4d2d] md:hidden' onClick={()=>setShowSearch(true)}/>)}
 
             {userData.role=="owner"? <>
-            {myShopData && <> <button className='hidden md:flex items-center gap-1 p-2 cursor-pointer rounded-full bg-[#ff4d2d]/10 text-[#ff4d2d]'>
+            {myShopData && <> <button className='hidden md:flex items-center gap-1 p-2 cursor-pointer rounded-full bg-[#ff4d2d]/10 text-[#ff4d2d]' onClick={()=>navigate("/add-item")}>
                 <FaPlus size={20}/>
                 <span>Add food items</span>
                 </button>
-                <button className='md:hidden flex items-center p-2 cursor-pointer rounded-full bg-[#ff4d2d]/10 text-[#ff4d2d]'>
+                <button className='md:hidden flex items-center p-2 cursor-pointer rounded-full bg-[#ff4d2d]/10 text-[#ff4d2d]' onClick={()=>navigate("/add-item")}>
                 <FaPlus size={20}/>
                 </button></>}
                 
@@ -89,7 +91,9 @@ const Nav = () => {
             {showInfo && 
             <div className='fixed top-[80px] right-[10px] md:right-[10%] lg:right-[25%] w-[180px] bg-white shadow-2xl rounded-xl p-[20px] flex flex-col gap-[10px] z-[9999]'>
               <div className='text-[17px] font-semibold'>{userData?.fullName}</div> 
-              <div className='md:hidden text-[#ff4d2d] font-semibold cursor-pointer'>My Orders</div>
+              {userData.role=="user" && 
+              <div className='md:hidden text-[#ff4d2d] font-semibold cursor-pointer'>My Orders</div>}
+              
               <div className='text-[#ff4d2d] font-semibold cursor-pointer' onClick={handleLogOut}>Log Out</div> 
             </div>}
         </div>
