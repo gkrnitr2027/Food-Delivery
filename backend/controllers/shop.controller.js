@@ -54,6 +54,7 @@ export const getShopByCity=async(req,res)=>{
         if (!shops){
             return res.status(400).json({message:"shops not found"})
         }
+        return res.status(200).json(shops)
     } catch (error) {
         return res.status(500).json({message:`Get Shop by city error ${error}`})
     }

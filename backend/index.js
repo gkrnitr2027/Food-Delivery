@@ -9,6 +9,7 @@ import cors from "cors"
 import userRouter from "./routes/user.routes.js"
 import shopRouter from "./routes/shop.routes.js"
 import itemRouter from "./routes/item.routes.js"
+import orderRouter from "./routes/order.routes.js"
 
 dns.setServers(["1.1.1.1", "8.8.8.8"])
 const app=express()
@@ -24,6 +25,7 @@ app.use("/api/auth",authRouter)
 app.use("/api/user",userRouter)
 app.use("/api/shop",shopRouter)
 app.use("/api/items",itemRouter)
+app.use("/api/order", orderRouter)
 
 connectDb().then(() => {
   app.listen(port, () => {

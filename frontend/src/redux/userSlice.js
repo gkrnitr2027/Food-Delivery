@@ -7,7 +7,11 @@ const userSlice = createSlice({
         currentCity:null,
         currentState:null,
         currentAddress:null,
-        shopsInMyCity:null
+        shopInMyCity:null,
+        itemsInMyCity:null,
+        cartItems:[],
+        totalAmount:0,
+        myOrders:null
     },
     reducers:{
         setUserData:(state,action)=>{
@@ -23,10 +27,41 @@ const userSlice = createSlice({
             state.currentAddress=action.payload
         },
         setShopsInMyCity:(state,action)=>{
-            state.shopsInMyCity=action.payload
+            state.shopInMyCity=action.payload
+        },
+        setItemsInMyCity:(state,action)=>{
+            state.itemsInMyCity=action.payload
+        },
+        addToCart:(state,action)=>{
+            const cartItem=action.payload
+            const existingItem=state.cartItems.find(i=>i._id===cartItem.id)
+            if(existingItem){
+                existingItem.quantity+=cartItem.quantity
+            } else {
+                state.cartItems.push(cartItem)
+            }
+            const calculateTotal = (cartItems) =>
+            cartItems.reduce((sum, i) => sum + i.price * i.quantity, 0);    
+            state.totalAmount=calculateTotal(state.cartItems)
+            
+        },
+        updateQuantity:(state, action)=>{
+            const {id, quantity}=action.payload
+            const item=state.cartItems.find(i=>i.id==id)
+            if(item){
+                item.quantity=quantity
+            }
+            state.totalAmount=state.cartItems.reduce((sum,i)=>sum+i.price*i.quantity,0)
+        },
+        removeCartItems:(state, action)=>{
+           state.cartItems=state.cartItems.filter(i=>i.id!==action.payload)
+           state.totalAmount=state.cartItems.reduce((sum,i)=>sum+i.price*i.quantity,0)
+        },
+        setMyOrders:(state, action)=>{
+            state.myOrders=action.payload
         }
     }
 })
 
-export const {setUserData, setCurrentCity, setCurrentState, setCurrentAddress, setShopsInMyCity} = userSlice.actions
+export const {setUserData, setCurrentCity, setCurrentState, setCurrentAddress, setShopsInMyCity, setItemsInMyCity, addToCart, updateQuantity, removeCartItems, setMyOrders} = userSlice.actions
 export default userSlice.reducer

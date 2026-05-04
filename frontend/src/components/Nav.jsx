@@ -12,7 +12,7 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
-    const {userData, currentCity} = useSelector(state=>state.user)
+    const {userData, currentCity, cartItems} = useSelector(state=>state.user)
     const {myShopData} = useSelector(state=>state.owner)
     const [showInfo, setShowInfo] = useState(false)
     const [showSearch, setShowSearch] = useState(false)
@@ -66,17 +66,17 @@ const Nav = () => {
                 <div className='hidden md:flex items-center gap-2 cursor-pointer relative px-3 py-1 rounded-lg bg-[#ff4d2d]/10 text-[#ff4d2d] font-medium'>
                     <TbReceiptDollarFilled size={20}/>
                     <span>My Orders</span>
-                    <span className='absolute -right-2 -top-2 text-xs font-bold text-white bg-[#ff4d2d] rounded-full px-[6px] py-[1px]'>0</span>
+                    <span className='absolute -right-2 -top-2 text-xs font-bold text-white bg-[#ff4d2d] rounded-full px-[6px] py-[1px]'>{cartItems.length}</span>
                 </div>
                 <div className='md:hidden flex items-center gap-2 cursor-pointer relative px-3 py-1 rounded-lg bg-[#ff4d2d]/10 text-[#ff4d2d] font-medium'>
                     <TbReceiptDollarFilled size={20}/>
-                    <span className='absolute -right-2 -top-2 text-xs font-bold text-white bg-[#ff4d2d] rounded-full px-[6px] py-[1px]'>0</span>
+                    <span className='absolute -right-2 -top-2 text-xs font-bold text-white bg-[#ff4d2d] rounded-full px-[6px] py-[1px]'>{cartItems.length}</span>
                 </div>
                 </>: (
                     <>
-                    <div className='relative cursor-pointer'>
+                    <div className='relative cursor-pointer' onClick={()=>navigate("/cart")}>
                     <FaShoppingCart  size={25} className='text-[#ff4d2d]'/>
-                    <span className='absolute right-[-9px] top-[-12px] text-[#ff4d2d]'>0</span>
+                    <span className='absolute right-[-9px] top-[-12px] text-[#ff4d2d]'>{cartItems.length}</span>
                     </div>
         <button className='hidden md:block px-3 py-1 rounded-lg bg-[#ff4d2d]/10 text-[#ff4d2d] text-sm font-medium'>
             My Order

@@ -19,7 +19,7 @@ function useGetMyShop() {
         });
         dispatch(setMyShopData(result.data));
       } catch (error) {
-        console.log('error in fetching current user', error);
+        console.log(error.response?.data || error.message)
       }
     };
     fetchShop();

@@ -103,8 +103,7 @@ function EditItem() {
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-orange-50 to-white p-6">
-      <div
-        className="absolute left-[20px] top-[20px] z-[10] cursor-pointer"
+      <div className="absolute left-[20px] top-[20px] z-[10] cursor-pointer"
         onClick={() => navigate("/")}
       >
         <IoMdArrowBack size={35} className="text-[#ff4d2d]" />
