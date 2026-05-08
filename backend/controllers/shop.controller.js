@@ -29,15 +29,15 @@ export const createEditShop=async (req, res) => {
 export const getMyShop=async (req, res) => {
     try {
         const shop = await Shop.findOne({
-            owner: new mongoose.Types.ObjectId(req.userId)
+            owner: req.userId
         })
         .populate("owner")
         .populate({
             path: "items",
-            options: { sort: { updatedAt: -1 } }
+            options: { sort: { createdAt: -1 } }
         });
         if(!shop){
-             return res.status(404).json({ message: "Shop not found" });
+             return null
         }
         return res.status(200).json(shop)
     } catch (error) {

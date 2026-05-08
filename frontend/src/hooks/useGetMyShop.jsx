@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector,useDispatch } from 'react-redux';
-
+import { setUserData } from '../redux/userSlice.js';
 import { serverUrl } from '../App.jsx';
 import { setMyShopData } from '../redux/ownerSlice.js';
 
 
 function useGetMyShop() {
   const dispatch = useDispatch();
-  const {userData} = useSelector((state)=>state.user);
+  const {userData} = useSelector(state=>state.user);
 
   useEffect(() => {
-    if (!userData || !userData._id) return;
     const fetchShop = async () => {
       try {
         const result = await axios.get(`${serverUrl}/api/shop/get-my`, {

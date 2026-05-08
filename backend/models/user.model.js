@@ -22,6 +22,9 @@ const userSchema = new mongoose.Schema({
         enum:["user", "owner", "deliveryBoy"],
         required:true
     },
+    address:{
+        type:String
+    },
     resetOtp:{
         type:String
     },
