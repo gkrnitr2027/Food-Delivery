@@ -1,24 +1,3 @@
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,16,20&height=180&section=header&text=Vingo&fontSize=70&fontColor=ffffff&desc=Real-Time%20Food%20Delivery%20Platform&descAlignY=65&descSize=18" width="100%"/>
-
-[![Live Demo](https://img.shields.io/badge/Live_Demo-vingo--sage.vercel.app-ff4d2d?style=for-the-badge)](https://vingo-sage.vercel.app)
-
-[![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://react.dev)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
-[![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)](https://expressjs.com)
-[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com)
-[![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=flat-square&logo=socket.io&logoColor=white)](https://socket.io)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-[![Razorpay](https://img.shields.io/badge/Razorpay-0C2451?style=flat-square&logo=razorpay&logoColor=white)](https://razorpay.com)
-
-</div>
-
-<br/>
-
-## 📖 About
-
 **Vingo** is a full-stack, real-time food delivery platform built on the MERN stack. It brings together three distinct user roles — **customers**, **shop owners**, and **delivery partners** — in one connected ecosystem.
 
 The core idea behind Vingo is that food delivery is fundamentally a *coordination problem*: a customer needs to know where their food is, a shop owner needs to know when a new order arrives, and a delivery partner needs to know which orders are nearby and available. Vingo solves this with a Socket.io backbone that pushes updates to every relevant party the instant something changes — no polling, no refreshing, no waiting.
