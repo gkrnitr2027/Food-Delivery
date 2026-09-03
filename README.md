@@ -184,7 +184,7 @@ vingo/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/vingo.git
+git clone https://github.com/gkrnitr2027/Food-Delivery.git
 cd vingo
 ```
 
@@ -333,13 +333,3 @@ This project is built for educational and personal portfolio purposes.
 - [Geoapify](https://www.geoapify.com), for geocoding services
 - [Razorpay](https://razorpay.com), for payment infrastructure
 - [Resend](https://resend.com), for transactional email delivery
-
-<br/>
-
-<div align="center">
-
-**Author:** Biswajit Pattanaik
-
-Made with ❤️ in India
-
-</div>
